@@ -16,14 +16,14 @@ public final class BuildSecretsWriter {
         IBuildSecrets secretStore = BuildSecretsHelper.queryBuildSecretsForContributor(trs, user);
 
         Object ssWorkingCopy;
-        if(secretStore == null) {
+        if (secretStore == null) {
             ssWorkingCopy = IBuildSecrets.ITEM_TYPE.createItem();
-            ((IBuildSecrets)ssWorkingCopy).setOwner(user);
+            ((IBuildSecrets) ssWorkingCopy).setOwner(user);
         } else {
             ssWorkingCopy = secretStore.getWorkingCopy();
         }
 
-        ((IBuildSecrets)ssWorkingCopy).setProperty(key, value);
+        ((IBuildSecrets) ssWorkingCopy).setProperty(key, value);
 
         IManagedItem managedHolder = (IManagedItem) ssWorkingCopy;
         managedHolder.setContextId(user.getContextId());

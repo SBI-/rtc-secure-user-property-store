@@ -27,7 +27,7 @@ public class Crypto {
     }
 
     public static String decrypt(String cipherText, String encryptionKey) throws GeneralSecurityException, UnsupportedEncodingException {
-        if(cipherText != null && cipherText.length() > 0) {
+        if (cipherText != null && cipherText.length() > 0) {
             byte[] combinedValue = cipherText.getBytes(STRING_ENCODING);
             byte[] iv = Arrays.copyOfRange(combinedValue, 0, 16);
             byte[] byteCyperText = Arrays.copyOfRange(combinedValue, 16, combinedValue.length);

@@ -34,13 +34,13 @@ public final class TokenWriterService extends AbstractRestService {
     public void execute() throws IOException, URISyntaxException, AuthenticationException {
         IContributor user = User.getCurrentContributor(parentService);
         JsonObject tokenStoreRequestData = RequestReader.readAsJson(request);
-        if(user == null) {
+        if (user == null) {
             response.setStatus(401);
             return;
         }
         JsonPrimitive remoteKeyPrimitive = tokenStoreRequestData.getAsJsonPrimitive("key");
         JsonPrimitive tokenPrimitive = tokenStoreRequestData.getAsJsonPrimitive("token");
-        if(remoteKeyPrimitive != null && tokenPrimitive != null) {
+        if (remoteKeyPrimitive != null && tokenPrimitive != null) {
             String token = tokenPrimitive.getAsString();
             String scope = remoteKeyPrimitive.getAsString();
             String hashedKey = BuildSecretsHelper.generateKey(user.getUserId(), scope);

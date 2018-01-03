@@ -24,7 +24,7 @@ public final class BuildSecretsHelper {
         query.filter(queryModel.owner()._eq(prec));
         IItem[] results = (new QueryHelper(serverQueryService, repoItemService))
                 .queryItems(query, new Object[]{user}, IRepositoryItemService.COMPLETE, 1);
-        return (IBuildSecrets)(results.length == 0?null:results[0]);
+        return (IBuildSecrets) (results.length == 0 ? null : results[0]);
     }
 
     public static String generateKey(String user, String scope) {

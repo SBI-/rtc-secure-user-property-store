@@ -14,11 +14,11 @@ public class BuildSecretsReader {
 
     public static String getSecretByContributor(TeamRawService trs, IContributor user, String key) throws TeamRepositoryException {
         List props = getSecretsByContributor(trs, user);
-        if(props != null && key != null) {
+        if (props != null && key != null) {
             Iterator<IBuildProperty> iter = props.iterator();
             while (iter.hasNext()) {
                 IBuildProperty prop = iter.next();
-                if(key.equals(prop.getName())) {
+                if (key.equals(prop.getName())) {
                     return prop.getValue();
                 }
             }
@@ -28,7 +28,7 @@ public class BuildSecretsReader {
 
     private static List getSecretsByContributor(TeamRawService trs, IContributor user) throws TeamRepositoryException {
         IBuildSecrets secretStore = BuildSecretsHelper.queryBuildSecretsForContributor(trs, user);
-        if(secretStore == null) {
+        if (secretStore == null) {
             return new ArrayList();
         }
         return secretStore.getProperties();

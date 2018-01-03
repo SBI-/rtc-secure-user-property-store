@@ -14,10 +14,10 @@ public class PrivateKeyValidator implements IConfigurationPropertyValidator {
     private final static String KEY_LENGTH_ERROR_MSG = "Private Key must have a length of exsactly 16 digits!";
 
     public Map<String, IStatus> validateProperties(Map<String, Object> properties, boolean fast) {
-        String el = (String)properties.get(PRIVATE_KEY_PROP);
+        String el = (String) properties.get(PRIVATE_KEY_PROP);
         Map<String, IStatus> propStatus = new HashMap(1);
         IStatus s;
-        if(el.length() == KEY_LENGTH) {
+        if (el.length() == KEY_LENGTH) {
             s = Status.OK_STATUS;
         } else {
             s = new Status(4, PLUGIN_ID, KEY_LENGTH_ERROR_MSG);

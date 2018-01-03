@@ -32,7 +32,7 @@ public class TokenReaderService extends AbstractRestService {
     public void execute() throws IOException, URISyntaxException, AuthenticationException {
         IContributor user = User.getCurrentContributor(parentService);
         String key = restRequest.getParameterValue("key");
-        if(user == null) {
+        if (user == null) {
             response.setStatus(401);
             return;
         }
@@ -54,7 +54,7 @@ public class TokenReaderService extends AbstractRestService {
             response.setStatus(500);
         }
 
-        if(userToken != null && userToken.length() > 0 && securedValue != null) {
+        if (userToken != null && userToken.length() > 0 && securedValue != null) {
             JsonObject formattedResponse = new JsonObject();
             formattedResponse.addProperty("token", userToken);
             response.getWriter().write(formattedResponse.toString());
